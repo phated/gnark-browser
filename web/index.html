@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        go.argv = [
+            "hash.r1cs",
+            "hash.pkey",
+            "hash.vkey",
+            // JSON.stringify({
+            //     key: 0,
+            //     x: 1764,
+            //     hash: "15893827533473716138720882070731822975159228540693753428689375377280130954696",
+            // })
+        ]
+        WebAssembly.instantiateStreaming(
+            fetch("main.wasm"),
+            go.importObject
+        ).then(result => {
+            // var start = Date.now()
+            // console.log('start', start);
+            go.run(result.instance);
+            // var end = Date.now();
+            // console.log('end', end);
+            // console.log('total', end - start)
+        });
+    </script>
+</head>
+
+<body></body>
+
+</html>

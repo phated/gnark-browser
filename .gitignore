@@ -1,0 +1,7 @@
+*.old
+*.pkey
+*.r1cs
+*.vkey
+*.wasm
+*.sol
+.DS_Store
